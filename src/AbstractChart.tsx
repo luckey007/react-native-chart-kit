@@ -31,6 +31,9 @@ export interface AbstractChartConfig extends ChartConfig {
   verticalLabelRotation?: number;
   formatXLabel?: (xLabel: string) => string;
   verticalLabelsHeightPercentage?: number;
+  //Adding props for topbar labels
+  topBarLabelColor?: (opacity: number) => string;
+  topBarlabelFont?: Object;
 }
 
 export type AbstractChartState = {};
