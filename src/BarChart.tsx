@@ -46,7 +46,9 @@ export interface BarChartProps extends AbstractChartProps {
   showValuesOnTopOfBars?: boolean;
   withCustomBarColorFromData?: boolean;
   flatColor?: boolean;
-  topBarLabelColor?: string;
+  //Adding props for topbar labels
+  topBarLabelColor?: (opacity: number) => string;
+  topBarlabelFont?: Object;
 }
 
 type BarChartState = {};
@@ -195,10 +197,11 @@ class BarChart extends AbstractChart<BarChartProps, BarChartState> {
             (i * (width - paddingRight)) / data.length +
             barWidth / 1
           }
-          y={((baseHeight - barHeight) / 4) * 3 + paddingTop - 1 + 5}
-          fill={this.props.chartConfig.color(0.6)}
+          y={((baseHeight - barHeight) / 4) * 3 + paddingTop - 5}
+          fill={this.props.chartConfig.topBarLabelColor(0.6)}
           fontSize="12"
           textAnchor="middle"
+          {...this.props.chartConfig.topBarlabelFont}
         >
           {data[i]}
         </Text>
